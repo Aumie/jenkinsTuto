@@ -6,7 +6,6 @@ pipeline {
             steps {
                 sh 'make --version' 
                 sh 'make check || true' 
-                junit '**/target/*.xml'
             }
         }
     }
