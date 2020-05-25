@@ -8,5 +8,15 @@ pipeline {
                 sh 'make check || true' 
             }
         }
+        stage('Deploy') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS' 
+              }
+            }
+            steps {
+                sh 'make publish'
+            }
+        }
     }
 }
