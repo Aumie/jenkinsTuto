@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'make --version' 
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
+                sh 'make check || true' 
+                junit '**/target/*.xml'
             }
         }
     }
